@@ -33,3 +33,9 @@ module "k8s" {
   client_key            = "${base64decode(module.cluster.client_key)}"
   cluster_ca_certificate= "${base64decode(module.cluster.cluster_ca_certificate)}"
 }
+
+module "argocd" {
+  source  = "DeimosCloud/argocd/kubernetes"
+  version = "1.1.2"
+  # insert the 2 required variables here
+}
