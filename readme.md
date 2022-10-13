@@ -103,7 +103,7 @@ terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL \
     -var ssh_key="$SSH_KEY"
 ```
 
-# Lets see what we deployed
+# Let's see what we deployed
 
 ```
 # grab our AKS config
