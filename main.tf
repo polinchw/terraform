@@ -16,6 +16,7 @@ provider "azurerm" {
   features {}
 }
 
+
 module "cluster" {
   source                = "./modules/cluster/"
   serviceprinciple_id   = var.serviceprinciple_id
@@ -28,6 +29,14 @@ module "cluster" {
 
 module "k8s" {
   source                = "./modules/k8s/"
+  host                  = "${module.cluster.host}"
+  client_certificate    = "${base64decode(module.cluster.client_certificate)}"
+  client_key            = "${base64decode(module.cluster.client_key)}"
+  cluster_ca_certificate= "${base64decode(module.cluster.cluster_ca_certificate)}"
+}
+
+module "argocd" {
+  source                = "./modules/argocd"
   host                  = "${module.cluster.host}"
   client_certificate    = "${base64decode(module.cluster.client_certificate)}"
   client_key            = "${base64decode(module.cluster.client_key)}"
