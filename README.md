@@ -1,6 +1,11 @@
-# Getting Started with AKS using Terraform
+# Install an AKS cluster with ArgoCD with Terraform
 
 ## Description
+
+This repo has Terraform manifests that will deploy:
+
++ AKS Kubernetes Cluster
++ ArgoCD
 
 This Terraform example came from Marcel Demper's [Github](https://github.com/marcel-dempers/docker-development-youtube-series) repo.  Watch his [video](https://www.youtube.com/watch?v=bHjS4xqwc9A) on the 
 subject to make the tutorial easier to follow.
