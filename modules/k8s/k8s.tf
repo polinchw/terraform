@@ -33,7 +33,7 @@ resource "kubernetes_deployment" "example" {
 
       spec {
         container {
-          image = "nginx:1.7.8"
+          image = "nginx:latest"
           name  = "example"
 
           resources {
