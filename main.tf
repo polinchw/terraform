@@ -16,6 +16,7 @@ provider "azurerm" {
   features {}
 }
 
+
 module "cluster" {
   source                = "./modules/cluster/"
   serviceprinciple_id   = var.serviceprinciple_id
@@ -35,7 +36,9 @@ module "k8s" {
 }
 
 module "argocd" {
-  source  = "DeimosCloud/argocd/kubernetes"
-  version = "1.1.2"
-  # insert the 2 required variables here
+  source                = "./modules/argocd"
+  host                  = "${module.cluster.host}"
+  client_certificate    = "${base64decode(module.cluster.client_certificate)}"
+  client_key            = "${base64decode(module.cluster.client_key)}"
+  cluster_ca_certificate= "${base64decode(module.cluster.cluster_ca_certificate)}"
 }
