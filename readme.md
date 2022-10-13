@@ -9,6 +9,8 @@ More resources:
 
 Terraform provider for Azure [here](https://github.com/terraform-providers/terraform-provider-azurerm) <br/>
 
+Another Terraform instructional [video](https://www.youtube.com/watch?v=7xngnjfIlK4)
+
 ## Azure CLI
 
 You can get the Azure CLI on [Docker-Hub](https://hub.docker.com/_/microsoft-azure-cli) <br/>
