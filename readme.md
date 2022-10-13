@@ -1,5 +1,10 @@
 # Getting Started with AKS using Terraform
 
+## Description
+
+This Terraform example came from Marcel Demper's [Github](https://github.com/marcel-dempers/docker-development-youtube-series) repo.  Watch his [video](https://www.youtube.com/watch?v=bHjS4xqwc9A) on the 
+subject to make the tutorial easier to follow.
+
 More resources:
 
 Terraform provider for Azure [here](https://github.com/terraform-providers/terraform-provider-azurerm) <br/>
