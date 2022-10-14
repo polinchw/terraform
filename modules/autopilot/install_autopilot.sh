@@ -10,6 +10,7 @@ export GIT_TOKEN=$1
 export GIT_REPO=$2
 
 # check the installation
-./argocd-autopilot-linux-amd64 version $1 $2
+./argocd-autopilot-linux-amd64 version
 
+#boot strap argocd with some apps
 ./argocd-autopilot-linux-amd64 repo bootstrap --recover
