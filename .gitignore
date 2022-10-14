@@ -4,3 +4,4 @@ terraform.tfstate
 terraform.tfstate.backup
 secrets.txt
 argocd-autopilot-darwin-amd64
+argocd-autopilot-linux-amd64
