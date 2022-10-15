@@ -13,4 +13,4 @@ export GIT_REPO=$2
 ./argocd-autopilot-linux-amd64 version
 
 #boot strap argocd with some apps
-./argocd-autopilot-linux-amd64 repo bootstrap --recover
+# ./argocd-autopilot-linux-amd64 repo bootstrap --recover

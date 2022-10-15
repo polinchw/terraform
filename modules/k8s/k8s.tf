@@ -83,3 +83,9 @@ resource "kubernetes_service" "example" {
     type = "LoadBalancer"
   }
 }
+
+resource "null_resource" "bootstrap_autopilot" {
+  provisioner "local-exec" {
+    command = "./argocd-autopilot-linux-amd64 repo bootstrap --recover"
+  }
+}
