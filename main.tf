@@ -32,6 +32,8 @@ module "k8s" {
   client_certificate    = "${base64decode(module.cluster.client_certificate)}"
   client_key            = "${base64decode(module.cluster.client_key)}"
   cluster_ca_certificate= "${base64decode(module.cluster.cluster_ca_certificate)}"
+  git_token = var.git_token
+  git_repo = var.git_repo
 }
 
 # module "argocd" {
@@ -42,7 +44,7 @@ module "k8s" {
 #   cluster_ca_certificate= "${base64decode(module.cluster.cluster_ca_certificate)}"
 # }
 
-module "autopilot" {
+module "install_autopilot" {
   source                = "./modules/autopilot"
   git_token             = var.git_token
   git_repo              = var.git_repo
