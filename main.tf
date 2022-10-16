@@ -32,8 +32,9 @@ module "k8s" {
   client_certificate    = "${base64decode(module.cluster.client_certificate)}"
   client_key            = "${base64decode(module.cluster.client_key)}"
   cluster_ca_certificate= "${base64decode(module.cluster.cluster_ca_certificate)}"
-  git_token = var.git_token
-  git_repo = var.git_repo
+  git_token             = var.git_token
+  git_repo              = var.git_repo
+  kubeconfig            = "${base64decode(module.cluster.kubeconfig)}"
 }
 
 # module "argocd" {

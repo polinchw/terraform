@@ -1,8 +1,9 @@
 
 provider "kubectl" {
-    load_config_file       = true
-    config_path = "~/.kube/config"
     host = var.host
+    client_certificate = var.client_certificate
+    cluster_ca_certificate = var.cluster_ca_certificate
+    client_key = var.client_key
 }
 
 provider "kubernetes" {
@@ -90,21 +91,13 @@ resource "kubernetes_service" "example" {
   }
 }
 
-resource "null_resource" "set_git_token" {
-  provisioner "local-exec" {
-    command = "export GIT_TOKEN=${var.git_token}"
-  }
-}
-
-resource "null_resource" "set_git_repo" {
-  provisioner "local-exec" {
-    command = "export GIT_REPO=${var.git_repo}"
-  }
-}
-
 
 resource "null_resource" "bootstrap_autopilot" {
   provisioner "local-exec" {
     command = "export GIT_TOKEN=${var.git_token} && export GIT_REPO=${var.git_repo} && ./argocd-autopilot-linux-amd64 repo bootstrap --recover"
+    environment = {
+        KUBECONFIG = base64encode(var.kubeconfig)
+    }
+    
   }
 }

@@ -17,3 +17,7 @@ output "client_key" {
 output "host" {
     value = azurerm_kubernetes_cluster.aks-getting-started.kube_config.0.host
 }
+
+output "kubeconfig" {
+    value = azurerm_kubernetes_cluster.aks-getting-started.kube_admin_config_raw
+}
