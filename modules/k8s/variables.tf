@@ -16,7 +16,3 @@ variable "git_token" {
 variable "git_repo" {
     description = "The git repo that contains the argocd autopilot boot strap."
 }
-
-variable "kubeconfig" {
-  
-}

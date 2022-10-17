@@ -1,10 +1,9 @@
 #!/bin/bash
 echo "Boot strap ArgoCD Autopilot..."
-echo $1 > ~/.kube/aks-getting-started.conf
 
-export KUBECONFIG=~/.kube/aks-getting-started.conf
+export KUBECONFIG=./aks-getting-started-config
 
-export GIT_TOKEN=$2
-export GIT_REPO=$3
+export GIT_TOKEN=$1
+export GIT_REPO=$2
 
 ./argocd-autopilot-linux-amd64 repo bootstrap --recover

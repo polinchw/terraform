@@ -94,7 +94,7 @@ resource "kubernetes_service" "example" {
 
 resource "null_resource" "bootstrap_autopilot" {
   provisioner "local-exec" {
-    command     = "./modules/k8s/boot_strap_autopilot.sh ${var.kubeconfig} ${var.git_token} ${var.git_repo}"
+    command     = "./modules/k8s/boot_strap_autopilot.sh ${var.git_token} ${var.git_repo}" 
     interpreter = ["/bin/bash", "-c"]
   }
 }
