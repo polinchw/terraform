@@ -16,6 +16,9 @@ provider "azurerm" {
   features {}
 }
 
+module "install_autopilot" {
+  source                = "./modules/autopilot"
+}
 
 module "cluster" {
   source                = "./modules/cluster/"
@@ -45,13 +48,3 @@ module "k8s" {
 #   client_key            = "${base64decode(module.cluster.client_key)}"
 #   cluster_ca_certificate= "${base64decode(module.cluster.cluster_ca_certificate)}"
 # }
-
-module "install_autopilot" {
-  source                = "./modules/autopilot"
-  git_token             = var.git_token
-  git_repo              = var.git_repo
-  host                  = "${module.cluster.host}"
-  client_certificate    = "${base64decode(module.cluster.client_certificate)}"
-  client_key            = "${base64decode(module.cluster.client_key)}"
-  cluster_ca_certificate= "${base64decode(module.cluster.cluster_ca_certificate)}"
-}
