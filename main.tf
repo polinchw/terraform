@@ -24,7 +24,7 @@ module "cluster" {
   ssh_key               = var.ssh_key
   location              = var.location
   kubernetes_version    = var.kubernetes_version
-  kubeconfig_file       = "./aks-getting-started-config"
+  kubeconfig_file       = "aks-getting-started-config"
 }
 
 module "k8s" {
@@ -35,7 +35,7 @@ module "k8s" {
   cluster_ca_certificate= "${base64decode(module.cluster.cluster_ca_certificate)}"
   git_token             = var.git_token
   git_repo              = var.git_repo
-  kubeconfig_file       = "./aks-getting-started-config"
+  kubeconfig_file       = "modules/cluster/aks-getting-started-config"
 }
 
 # module "argocd" {
