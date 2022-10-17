@@ -65,7 +65,7 @@ resource "kubernetes_deployment" "example" {
           #     }
           #   }
 
-          #   initial_delay_seconds = 3
+          #   initial_delay_secohttps://www.terraform.io/nds = 3
           #   period_seconds        = 3
           # }
         }
@@ -91,15 +91,10 @@ resource "kubernetes_service" "example" {
   }
 }
 
-
-resource "null_resource" "bootstrap_autopilot" {
-  provisioner "local-exec" {
-    command     = "./argocd-autopilot-linux-amd64 repo bootstrap --recover" 
-    environment = {
-      KUBECONFIG = var.kubeconfig_file
-      GIT_TOKEN  = var.git_token
-      GIT_REPO   = var.git_repo
-     }
-  }
-  
+module "boostrap" {
+  source          = "github.com/polinchw/argocd-autopilot-terraform-modules//modules/bootstrap-autopilot"
+  kubeconfig_file = var.kubeconfig_file
+  git_token       = var.git_token
+  git_repo        = var.git_repo
 }
+  
