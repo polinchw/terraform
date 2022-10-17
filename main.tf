@@ -16,6 +16,9 @@ provider "azurerm" {
   features {}
 }
 
+module "install_autopilot" {
+  source                = "./modules/autopilot"
+}
 
 module "cluster" {
   source                = "./modules/cluster/"
@@ -23,8 +26,8 @@ module "cluster" {
   serviceprinciple_key  = var.serviceprinciple_key
   ssh_key               = var.ssh_key
   location              = var.location
-  kubernetes_version    = var.kubernetes_version  
-  
+  kubernetes_version    = var.kubernetes_version
+  kubeconfig_file       = "aks-getting-started-config"
 }
 
 module "k8s" {
@@ -33,12 +36,15 @@ module "k8s" {
   client_certificate    = "${base64decode(module.cluster.client_certificate)}"
   client_key            = "${base64decode(module.cluster.client_key)}"
   cluster_ca_certificate= "${base64decode(module.cluster.cluster_ca_certificate)}"
+  git_token             = var.git_token
+  git_repo              = var.git_repo
+  kubeconfig_file       = "modules/cluster/aks-getting-started-config"
 }
 
-module "argocd" {
-  source                = "./modules/argocd"
-  host                  = "${module.cluster.host}"
-  client_certificate    = "${base64decode(module.cluster.client_certificate)}"
-  client_key            = "${base64decode(module.cluster.client_key)}"
-  cluster_ca_certificate= "${base64decode(module.cluster.cluster_ca_certificate)}"
-}
+# module "argocd" {
+#   source                = "./modules/argocd"
+#   host                  = "${module.cluster.host}"
+#   client_certificate    = "${base64decode(module.cluster.client_certificate)}"
+#   client_key            = "${base64decode(module.cluster.client_key)}"
+#   cluster_ca_certificate= "${base64decode(module.cluster.cluster_ca_certificate)}"
+# }

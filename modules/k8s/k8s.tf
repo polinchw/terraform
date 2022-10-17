@@ -1,4 +1,11 @@
 
+provider "kubectl" {
+    host = var.host
+    client_certificate = var.client_certificate
+    cluster_ca_certificate = var.cluster_ca_certificate
+    client_key = var.client_key
+}
+
 provider "kubernetes" {
     host                   =  var.host
     client_certificate     =  var.client_certificate
@@ -80,6 +87,19 @@ resource "kubernetes_service" "example" {
       target_port = 80
     }
 
-    type = "LoadBalancer"
+    type = "NodePort"
   }
+}
+
+
+resource "null_resource" "bootstrap_autopilot" {
+  provisioner "local-exec" {
+    command     = "./argocd-autopilot-linux-amd64 repo bootstrap --recover" 
+    environment = {
+      KUBECONFIG = var.kubeconfig_file
+      GIT_TOKEN  = var.git_token
+      GIT_REPO   = var.git_repo
+     }
+  }
+  
 }

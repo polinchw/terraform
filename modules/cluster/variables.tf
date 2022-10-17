@@ -14,3 +14,7 @@ variable "kubernetes_version" {
 
 variable "ssh_key" {
 }
+
+variable "kubeconfig_file" {
+
+}
