@@ -17,7 +17,7 @@ provider "azurerm" {
 }
 
 module "install_autopilot" {
-  source                = "./modules/autopilot"
+  source                = "github.com/polinchw/argocd-autopilot-terraform-modules//modules/install-autopilot"
 }
 
 module "cluster" {
