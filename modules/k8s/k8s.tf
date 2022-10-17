@@ -65,7 +65,7 @@ resource "kubernetes_deployment" "example" {
           #     }
           #   }
 
-          #   initial_delay_secohttps://www.terraform.io/nds = 3
+          #   initial_delay_seconds = 3
           #   period_seconds        = 3
           # }
         }
