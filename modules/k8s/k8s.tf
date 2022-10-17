@@ -87,7 +87,7 @@ resource "kubernetes_service" "example" {
       target_port = 80
     }
 
-    type = "LoadBalancer"
+    type = "NodePort"
   }
 }
 
