@@ -94,7 +94,12 @@ resource "kubernetes_service" "example" {
 
 resource "null_resource" "bootstrap_autopilot" {
   provisioner "local-exec" {
-    command     = "./modules/k8s/boot_strap_autopilot.sh ${var.git_token} ${var.git_repo}" 
-    interpreter = ["/bin/bash", "-c"]
+    command     = "./argocd-autopilot-linux-amd64 repo bootstrap --recover" 
+    environment = {
+      KUBECONFIG = var.kubeconfig_file
+      GIT_TOKEN  = var.git_token
+      GIT_REPO   = var.git_repo
+     }
   }
+  
 }
