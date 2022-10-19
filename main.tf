@@ -30,17 +30,6 @@ module "cluster" {
   kubeconfig_file       = "aks-getting-started-config"
 }
 
-# module "k8s" {
-#   source                = "./modules/k8s/"
-#   host                  = "${module.cluster.host}"
-#   client_certificate    = "${base64decode(module.cluster.client_certificate)}"
-#   client_key            = "${base64decode(module.cluster.client_key)}"
-#   cluster_ca_certificate= "${base64decode(module.cluster.cluster_ca_certificate)}"
-#   git_token             = var.git_token
-#   git_repo              = var.git_repo
-#   kubeconfig_file       = "modules/cluster/aks-getting-started-config"
-# }
-
 module "boostrap_argocd_autopilot" {
   source          = "github.com/polinchw/argocd-autopilot-terraform-modules//modules/bootstrap-autopilot"
   kubeconfig_file = "modules/cluster/aks-getting-started-config"
