@@ -37,11 +37,3 @@ module "boostrap_argocd_autopilot" {
   git_repo        = var.git_repo
   cluster_name    = module.cluster.host
 }
-
-# module "argocd" {
-#   source                = "./modules/argocd"
-#   host                  = "${module.cluster.host}"
-#   client_certificate    = "${base64decode(module.cluster.client_certificate)}"
-#   client_key            = "${base64decode(module.cluster.client_key)}"
-#   cluster_ca_certificate= "${base64decode(module.cluster.cluster_ca_certificate)}"
-# }
