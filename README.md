@@ -1,4 +1,4 @@
-# Install an AKS cluster and ArgoCD with Terraform
+# Install an AKS cluster and boot strap ArgoCD Autopilot with Terraform
 
 ## Description
 
@@ -94,20 +94,26 @@ SSH_KEY=$(cat ~/.ssh/id_rsa.pub)
 
 Documentation on all the Kubernetes fields for terraform [here](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html)
 
+The following uses my [autopilot](https://github.com/polinchw/auto-pilot/) repo as an example.
+You'll need to set your `git_token` and `git_repo` to the 
+repo that contains your ArgoCD Autopilot repo.
+
 ```
 terraform init
 
-terraform plan -var serviceprinciple_id=$SERVICE_PRINCIPAL \
-    -var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
-    -var tenant_id=$TENTANT_ID \
-    -var subscription_id=$SUBSCRIPTION \
-    -var ssh_key="$SSH_KEY"
+terraform plan -var serviceprinciple_id=$SERVICE_PRINCIPAL 
+  -var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET"   -var tenant_id=$TENTANT_ID    
+  -var subscription_id=$SUBSCRIPTION 
+  -var ssh_key="$SSH_KEY"   
+  -var git_token=$GIT_TOKEN  
+  -var git_repo=https://github.com/polinchw/auto-pilot
 
-terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL \
-    -var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
-    -var tenant_id=$TENTANT_ID \
-    -var subscription_id=$SUBSCRIPTION \
-    -var ssh_key="$SSH_KEY"
+terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL 
+  -var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET"   -var tenant_id=$TENTANT_ID    
+  -var subscription_id=$SUBSCRIPTION 
+  -var ssh_key="$SSH_KEY"   
+  -var git_token=$GIT_TOKEN  
+  -var git_repo=https://github.com/polinchw/auto-pilot
 ```
 
 # Let's see what we deployed
