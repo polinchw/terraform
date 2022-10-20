@@ -1,4 +1,4 @@
-# Install an AKS cluster and boot strap ArgoCD Autopilot with Terraform
+# Terraform
 
 ## Description
 
