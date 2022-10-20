@@ -90,14 +90,19 @@ ssh-keygen -t rsa -b 4096 -N "VeryStrongSecret123!" -C "your_email@example.com" 
 SSH_KEY=$(cat ~/.ssh/id_rsa.pub)
 ```
 
-## Terraform Azure Kubernetes Provider 
+## Create AKS cluster with Terraform and Autopilot
 
-Documentation on all the Kubernetes fields for terraform [here](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html)
+Terrform will do the following:
 
-The following uses my [autopilot](https://github.com/polinchw/auto-pilot/) repo as an example.
++ Create a Kubernetes cluster on Azure.  
+
++ Install ArgoCD Autopilot and bootstrap a git repo that contains some basic helm charts. 
+  
++ The following example uses my ArgoCD [autopilot](https://github.com/polinchw/auto-pilot/) repo as an example.
 You'll need to set your `git_token` and `git_repo` to the 
 repo that contains your ArgoCD Autopilot repo.
 
++ Documentation on all the Kubernetes fields for terraform [here](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html)
 ```
 terraform init
 
@@ -116,23 +121,17 @@ terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL
   -var git_repo=https://github.com/polinchw/auto-pilot
 ```
 
-# Let's see what we deployed
+### Let's see what we deployed
 
 ```
 # grab our AKS config
 az aks get-credentials -n aks-getting-started -g aks-getting-started
 
-# Get kubectl
-
-curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-chmod +x ./kubectl
-mv ./kubectl /usr/local/bin/kubectl
-
 kubectl get svc
 
 ```
 
-# Clean up 
+### Clean up 
 
 ```
 terraform destroy -var serviceprinciple_id=$SERVICE_PRINCIPAL \
