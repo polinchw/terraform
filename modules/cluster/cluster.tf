@@ -1,14 +1,14 @@
 resource "azurerm_resource_group" "aks-getting-started" {
-  name     = "aks-getting-started"
+  name     = var.name
   location = var.location
 }
 
 resource "azurerm_kubernetes_cluster" "aks-getting-started" {
-  name                  = "aks-getting-started"
+  name                  = var.name
   location              = azurerm_resource_group.aks-getting-started.location
   resource_group_name   = azurerm_resource_group.aks-getting-started.name
-  dns_prefix            = "aks-getting-started"            
-  kubernetes_version    =  var.kubernetes_version
+  dns_prefix            = var.name            
+  kubernetes_version    = var.kubernetes_version
   
   default_node_pool {
     name       = "default"

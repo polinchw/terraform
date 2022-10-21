@@ -22,6 +22,7 @@ module "install_autopilot" {
 
 module "cluster" {
   source                = "./modules/cluster/"
+  name                  = var.name
   serviceprinciple_id   = var.serviceprinciple_id
   serviceprinciple_key  = var.serviceprinciple_key
   ssh_key               = var.ssh_key

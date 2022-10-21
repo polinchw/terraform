@@ -1,3 +1,7 @@
+variable "name" {
+   description = "The name of the cluster."
+   default = "aks-getting-started"
+}
 variable "serviceprinciple_id" {
 }
 

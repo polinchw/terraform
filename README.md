@@ -107,6 +107,7 @@ repo that contains your ArgoCD Autopilot repo.
 terraform init
 
 terraform plan -var serviceprinciple_id=$SERVICE_PRINCIPAL \
+  -var name=aks-getting-started \
   -var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
   -var tenant_id=$TENTANT_ID \
   -var subscription_id=$SUBSCRIPTION \
@@ -115,6 +116,7 @@ terraform plan -var serviceprinciple_id=$SERVICE_PRINCIPAL \
   -var git_repo=https://github.com/polinchw/auto-pilot
 
 terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL \
+  -var name=aks-getting-started \
   -var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
   -var tenant_id=$TENTANT_ID \ 
   -var subscription_id=$SUBSCRIPTION \ 
