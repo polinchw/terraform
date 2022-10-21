@@ -6,3 +6,4 @@ secrets.txt
 argocd-autopilot-darwin-amd64
 argocd-autopilot-linux-amd64
 aks-getting-started-config
+modules/cluster/configs/*
