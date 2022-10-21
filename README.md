@@ -130,7 +130,6 @@ terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL \
 az aks get-credentials -n aks-getting-started -g aks-getting-started
 
 kubectl get svc
-
 ```
 
 ### Clean up 
