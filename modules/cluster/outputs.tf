@@ -20,6 +20,6 @@ output "host" {
 
 resource "local_file" "kubeconfig" {
     depends_on   = [azurerm_kubernetes_cluster.aks-getting-started]
-    filename     = "${path.module}/${var.kubeconfig_file}"
+    filename     = "${path.module}/configs/${var.kubeconfig_file}"
     content      = azurerm_kubernetes_cluster.aks-getting-started.kube_config_raw
 }

@@ -28,12 +28,12 @@ module "cluster" {
   ssh_key               = var.ssh_key
   location              = var.location
   kubernetes_version    = var.kubernetes_version
-  kubeconfig_file       = "aks-getting-started-config"
+  kubeconfig_file       = "${var.name}-config"
 }
 
 module "boostrap_argocd_autopilot" {
   source          = "github.com/polinchw/argocd-autopilot-terraform-modules//modules/bootstrap-autopilot"
-  kubeconfig_file = "modules/cluster/aks-getting-started-config"
+  kubeconfig_file = "modules/cluster/configs/${var.name}-config"
   git_token       = var.git_token
   git_repo        = var.git_repo
   cluster_name    = module.cluster.host
