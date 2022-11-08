@@ -39,3 +39,7 @@ variable "git_repo" {
   default = "https://github.com/polinchw/auto-pilot"
 }
 
+variable "git_username" {
+   description = "The username assoicated with the git_token."
+}
+
