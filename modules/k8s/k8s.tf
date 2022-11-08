@@ -17,5 +17,4 @@ resource "kubernetes_secret" "git_creds" {
     password = var.git_token
   }
 
-  type = "kubernetes.io/basic-auth"
 }
