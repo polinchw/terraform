@@ -135,7 +135,6 @@ az aks get-credentials -n aks-getting-started -g aks-getting-started
 
 kubectl get svc
 ```
-
 ### Clean up 
 
 ```
