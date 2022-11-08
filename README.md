@@ -113,7 +113,8 @@ terraform plan -var serviceprinciple_id=$SERVICE_PRINCIPAL \
   -var subscription_id=$SUBSCRIPTION \
   -var ssh_key="$SSH_KEY" \
   -var git_token=$GIT_TOKEN \
-  -var git_repo=https://github.com/polinchw/auto-pilot
+  -var git_repo=https://github.com/polinchw/auto-pilot \
+  -var git_username=polinchw
 
 terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL \
   -var name=aks-getting-started \
@@ -122,7 +123,8 @@ terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL \
   -var subscription_id=$SUBSCRIPTION \ 
   -var ssh_key="$SSH_KEY" \   
   -var git_token=$GIT_TOKEN \  
-  -var git_repo=https://github.com/polinchw/auto-pilot
+  -var git_repo=https://github.com/polinchw/auto-pilot \
+  -var git_username=polinchw
 ```
 
 ### Let's see what we deployed
