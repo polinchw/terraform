@@ -9,6 +9,7 @@ provider "kubernetes" {
 resource "kubernetes_secret" "git_creds" {
   metadata {
     name = "git-creds"
+    namespace = "argocd"
   }
 
   data = {
