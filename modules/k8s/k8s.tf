@@ -6,6 +6,12 @@ provider "kubernetes" {
     cluster_ca_certificate =  var.cluster_ca_certificate
 }
 
+resource "kubernetes_namespace" "argocd" {
+  metadata {
+    name = "argocd"
+  }
+}
+
 resource "kubernetes_secret" "git_creds" {
   metadata {
     name = "git-creds"
