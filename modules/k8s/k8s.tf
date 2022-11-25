@@ -4,12 +4,18 @@ provider "kubernetes" {
     client_certificate     =  var.client_certificate
     client_key             =  var.client_key
     cluster_ca_certificate =  var.cluster_ca_certificate
+       
 }
 
 resource "kubernetes_namespace" "argocd" {
   metadata {
     name = "argocd"
+
   }
+  timeouts {
+    delete = "2m"
+  }
+
 }
 
 resource "kubernetes_secret" "git_creds" {
