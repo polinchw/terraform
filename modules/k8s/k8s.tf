@@ -7,17 +7,6 @@ provider "kubernetes" {
        
 }
 
-resource "kubernetes_namespace" "argocd" {
-  metadata {
-    name = "argocd"
-
-  }
-  timeouts {
-    delete = "2m"
-  }
-
-}
-
 resource "kubernetes_secret" "git_creds" {
   metadata {
     name = "git-creds"
