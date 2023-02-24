@@ -109,7 +109,7 @@ terraform init
 terraform plan -var serviceprinciple_id=$SERVICE_PRINCIPAL \
   -var name=aks-getting-started \
   -var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
-  -var tenant_id=$TENTANT_ID \
+  -var tenant_id=$TENANT_ID \
   -var subscription_id=$SUBSCRIPTION \
   -var ssh_key="$SSH_KEY" \
   -var git_token=$GIT_TOKEN \
@@ -119,7 +119,7 @@ terraform plan -var serviceprinciple_id=$SERVICE_PRINCIPAL \
 terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL \
   -var name=aks-getting-started \
   -var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
-  -var tenant_id=$TENTANT_ID \ 
+  -var tenant_id=$TENANT_ID \ 
   -var subscription_id=$SUBSCRIPTION \ 
   -var ssh_key="$SSH_KEY" \   
   -var git_token=$GIT_TOKEN \  
