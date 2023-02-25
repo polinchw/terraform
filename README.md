@@ -143,7 +143,7 @@ You want to remove the argocd namespace from the Terraform state before you dest
 have a Kubernetes finalizer that can cause the larger destory to hang.
 
 ```
-tf state rm module.k8s.kubernetes_namespace.argocd
+terraform state rm module.k8s.kubernetes_namespace.argocd
 ```
 
 #### Destroy the cluster with Terraform
