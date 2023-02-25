@@ -135,7 +135,18 @@ az aks get-credentials -n aks-getting-started -g aks-getting-started
 
 kubectl get svc
 ```
-### Clean up 
+### Clean up
+
+#### Remove the Argocd namespace
+
+You want to remove the argocd namespace from the Terraform state before you destroy the cluster because it can 
+have a Kubernetes finalizer that can cause the larger destory to hang.
+
+```
+tf state rm module.k8s.kubernetes_namespace.argocd
+```
+
+#### Destroy the cluster with Terraform
 
 ```
 terraform destroy -var serviceprinciple_id=$SERVICE_PRINCIPAL \
