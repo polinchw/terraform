@@ -32,7 +32,7 @@ docker run -it --rm -v ${PWD}:/work -w /work --entrypoint /bin/sh mcr.microsoft.
 ```
 #login and follow prompts
 az login 
-TENTANT_ID=<your-tenant-id>
+TENANT_ID=<your-tenant-id>
 
 # view and select your subscription account
 
