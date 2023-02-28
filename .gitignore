@@ -8,3 +8,5 @@ argocd-autopilot-linux-amd64
 aks-getting-started-config
 modules/cluster/configs/*
 azure-account.txt
+.terraform.lock.hcl
+terraform.tfstate.*
