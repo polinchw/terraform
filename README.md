@@ -159,3 +159,11 @@ terraform destroy -var serviceprinciple_id=$SERVICE_PRINCIPAL \
   -var git_repo=https://github.com/polinchw/auto-pilot \ 
   -var git_username=polinchw
 ```
+
+#### Delete Resource Group AZ CLI
+
+To delete the resource group with the az cli:
+
+```
+az group delete --name aks-getting-started
+```
