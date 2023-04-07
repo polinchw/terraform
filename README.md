@@ -167,3 +167,21 @@ To delete the resource group with the az cli:
 ```
 az group delete --name aks-getting-started
 ```
+
+#### Manual Custer Upgrade
+
+##### Control Plane
+
+To upgrade the AKS control plane run this command:
+
+```
+az aks upgrade --kubernetes-version 1.24.10 --name upgrade --resource-group upgrade-rg --control-plane-only
+```
+
+##### Upgrade Node Pool
+
+To upgrade the AKS node pool run this command:
+
+```
+az aks nodepool upgrade --cluster-name upgrade --nodepool-name agentpool --resource-group upgrade-rg --kubernetes-version 1.24.10
+```
